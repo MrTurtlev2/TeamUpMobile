@@ -7085,10 +7085,10 @@ react-native-codegen@^0.71.5:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
-react-native-gesture-handler@^2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.12.0.tgz#59ca9d97e4c71f70b9c258f14a1a081f4c689976"
-  integrity sha512-rr+XwVzXAVpY8co25ukvyI38fKCxTQjz7WajeZktl8qUPdh1twnSExgpT47DqDi4n+m+OiJPAnHfZOkqqAQMOg==
+react-native-gesture-handler@~2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz#2f63812e523c646f25b9ad660fc6f75948e51241"
+  integrity sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
@@ -7114,10 +7114,10 @@ react-native-reanimated@2.14.4:
     setimmediate "^1.0.5"
     string-hash-64 "^1.0.3"
 
-react-native-safe-area-context@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.6.3.tgz#f06cfea05b1c4b018aa9758667a109f619c62b55"
-  integrity sha512-3CeZM9HFXkuqiU9HqhOQp1yxhXw6q99axPWrT+VJkITd67gnPSU03+U27Xk2/cr9XrLUnakM07kj7H0hdPnFiQ==
+react-native-safe-area-context@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.5.0.tgz#9208313236e8f49e1920ac1e2a2c975f03aed284"
+  integrity sha512-0WORnk9SkREGUg2V7jHZbuN5x4vcxj/1B0QOcXJjdYWrzZHgLcUzYWWIUecUPJh747Mwjt/42RZDOaFn3L8kPQ==
 
 react-native@0.71.8:
   version "0.71.8"
