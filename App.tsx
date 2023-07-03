@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import {SafeAreaView} from "react-native";
+import {NavigationContainer} from "@react-navigation/native";
+import DrawerTabNavigation from "./navigation/DrawerTabNavigation";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app! 123</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <>
+            {/*<Text>Open up App.tsx to start working on your app! 123</Text>*/}
+            {/*<StatusBar style="auto" />*/}
+            <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+                <NavigationContainer>
+                    <DrawerTabNavigation/>
+                </NavigationContainer>
+            </SafeAreaView>
+        </>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
