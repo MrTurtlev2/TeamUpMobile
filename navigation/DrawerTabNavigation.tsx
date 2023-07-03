@@ -6,7 +6,6 @@ import {Dimensions, Text} from "react-native";
 import colors from "../constants/colors";
 import {TAB_NAVIGATOR} from "../constants/routeName";
 import TabNavigator from "./TabNavigator";
-// import CloseSvg from "../../../assets/svg/navigation/CloseSvg";
 
 const DrawerScrollView = styled(DrawerContentScrollView)`
   height: ${Dimensions.get('window').height + 'px'};

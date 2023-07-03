@@ -1,7 +1,8 @@
 import React from "react";
-import {Text} from "react-native";
 import colors from "../constants/colors";
 import styled from "@emotion/native";
+import ProfileIcon from "../assets/icons/ProfileIcon";
+import HomeIcon from "../assets/icons/HomeIcon";
 
 const TabBarWrapper = styled.View`
   height: 73px;
@@ -46,11 +47,10 @@ const TabBar = ({state, descriptors, navigation}: any) => {
                     });
                 };
 
-                // const iconsArray = [
-                //     <CupSvg key={0} color={isFocused ? focusedColor : unfocusedColor} />,
-                //     <CoffeeSvg key={1} color={isFocused ? focusedColor : unfocusedColor} />,
-                //     <NewsSvg key={2} color={isFocused ? focusedColor : unfocusedColor} />,
-                // ];
+                const iconsArray = [
+                    <HomeIcon key={0} color={isFocused ? focusedColor : unfocusedColor}/>,
+                    <HomeIcon key={1} color={isFocused ? focusedColor : unfocusedColor}/>,
+                ];
                 return (
                     <React.Fragment key={index}>
                         {shouldDisplay ? (
@@ -61,16 +61,15 @@ const TabBar = ({state, descriptors, navigation}: any) => {
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
                                 onLongPress={onLongPress}>
-                                {/*{iconsArray[index]}*/}
-                                <Text>Tu kliknij</Text>
+                                {iconsArray[index]}
+                                {/*<Text>Tu kliknij</Text>*/}
                             </TabBarItem>
                         ) : null}
                     </React.Fragment>
                 );
             })}
             <TabBarItem onPress={() => navigation.openDrawer()}>
-                {/*<MenuSvg/>*/}
-                <Text> tu menu </Text>
+                <ProfileIcon/>
             </TabBarItem>
         </TabBarWrapper>
     );
