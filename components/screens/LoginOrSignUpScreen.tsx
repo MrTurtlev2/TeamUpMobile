@@ -19,7 +19,7 @@ const LoginOrSignUpScreen = () => {
             <ButtonsWrapper>
                 <CustomButton onPress={() => navigate(OnboardRoutes.LOGIN)} text={'Zaloguj się'}
                               style={{marginBottom: 40}}/>
-                <CustomButton onPress={() => null} text={'Zarejestruj się'} revert/>
+                <CustomButton onPress={() => navigate(OnboardRoutes.REGISTER)} text={'Zarejestruj się'} revert/>
             </ButtonsWrapper>
         </OnboardLayout>
     )

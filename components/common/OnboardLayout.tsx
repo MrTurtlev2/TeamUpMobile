@@ -1,5 +1,5 @@
 import React from "react";
-import {Dimensions, ImageBackground, SafeAreaView, ScrollView} from "react-native";
+import {Dimensions, ImageBackground, ScrollView, View} from "react-native";
 import styled from "@emotion/native";
 import Logo from "../../assets/icons/Logo";
 import colors from "../../constants/colors";
@@ -8,9 +8,6 @@ import CurvedSvg from "../../assets/CurvedBg";
 const ScreenHeight = Dimensions.get('screen').height
 const ScreenWidth = Dimensions.get('screen').width
 
-const StyledSafeArea = styled(SafeAreaView)`
-  margin-top: 28px;
-`
 const TopBlock = styled.View`
   background-color: ${colors.blue};
   width: 100%;
@@ -37,7 +34,7 @@ const BottomContent = styled.View`
   z-index: 2;
   bottom: 0;
   align-items: center;
-  padding-top: 30px;
+  padding-top: 20px;
 `
 const BottomSubContent = styled.View`
   width: 100%;
@@ -49,20 +46,22 @@ const OnboardLayout = ({children}: any) => {
 
     return (
         <ScrollView style={{flex: 1}}>
-            <TopBlock>
-                <StyledBgImage source={require('../../assets/png/onboardBg.png')} resizeMode="cover"/>
-            </TopBlock>
-            <BottomBlock>
-                <BgImageWrapper>
-                    <BottomContent>
-                        <Logo/>
-                        <BottomSubContent>
-                            {children}
-                        </BottomSubContent>
-                    </BottomContent>
-                    <CurvedSvg/>
-                </BgImageWrapper>
-            </BottomBlock>
+            <View style={{flex: 1}}>
+                <TopBlock>
+                    <StyledBgImage source={require('../../assets/png/onboardBg.png')} resizeMode="cover"/>
+                </TopBlock>
+                <BottomBlock>
+                    <BgImageWrapper>
+                        <BottomContent>
+                            <Logo/>
+                            <BottomSubContent>
+                                {children}
+                            </BottomSubContent>
+                        </BottomContent>
+                        <CurvedSvg/>
+                    </BgImageWrapper>
+                </BottomBlock>
+            </View>
         </ScrollView>
     )
 

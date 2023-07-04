@@ -9,8 +9,5 @@ export enum Routes {
 export enum OnboardRoutes {
     LOGIN_OR_SIGNUP = 'LoginOrSignUpScreen',
     LOGIN = 'LoginScreen',
-    EXPLAINER_FIRST = 'ExplainerFirstScreen',
-    EXPLAINER_SECOND = 'ExplainerSecondScreen',
-    EXPLAINER_THIRD = 'ExplainerThirdScreen',
-    SIGN_UP = 'SignUpScreen',
+    REGISTER = 'RegisterScreen'
 }
