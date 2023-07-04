@@ -1,5 +1,5 @@
 import React from "react";
-import {Dimensions, ImageBackground, SafeAreaView} from "react-native";
+import {Dimensions, ImageBackground, SafeAreaView, ScrollView} from "react-native";
 import styled from "@emotion/native";
 import Logo from "../../assets/icons/Logo";
 import colors from "../../constants/colors";
@@ -48,7 +48,7 @@ const BottomSubContent = styled.View`
 const OnboardLayout = ({children}: any) => {
 
     return (
-        <StyledSafeArea>
+        <ScrollView style={{flex: 1}}>
             <TopBlock>
                 <StyledBgImage source={require('../../assets/png/onboardBg.png')} resizeMode="cover"/>
             </TopBlock>
@@ -63,8 +63,7 @@ const OnboardLayout = ({children}: any) => {
                     <CurvedSvg/>
                 </BgImageWrapper>
             </BottomBlock>
-
-        </StyledSafeArea>
+        </ScrollView>
     )
 
 }

@@ -33,7 +33,7 @@ const DrawerContent = ({props, navigation}: any) => {
 
     return (
         <DrawerWrapper>
-            <DrawerItem text="prepare coffee" onPress={() => navigate(Routes.HOME)}/>
+            <DrawerItem text="ustawienia" onPress={() => navigate(Routes.HOME)}/>
 
 
         </DrawerWrapper>

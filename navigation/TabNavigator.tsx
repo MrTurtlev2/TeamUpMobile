@@ -7,6 +7,7 @@ import {OnboardRoutes, Routes} from "../constants/routeName";
 import {useAppSelector} from "../state/hooks";
 import LoginOrSignUpScreen from "../components/screens/LoginOrSignUpScreen";
 import {createStackNavigator} from "@react-navigation/stack";
+import LoginScreen from "../components/screens/LoginScreen";
 
 const OnboardStackNavigator = () => {
     const Stack = createStackNavigator();
@@ -20,6 +21,14 @@ const OnboardStackNavigator = () => {
                     presentation: 'modal',
                 })}>
                 {() => <LoginOrSignUpScreen/>}
+            </Stack.Screen>
+            <Stack.Screen
+                name={OnboardRoutes.LOGIN}
+                options={() => ({
+                    headerShown: false,
+                    presentation: 'modal',
+                })}>
+                {() => <LoginScreen/>}
             </Stack.Screen>
 
         </Stack.Navigator>

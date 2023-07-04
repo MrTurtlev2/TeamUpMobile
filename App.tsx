@@ -4,6 +4,7 @@ import DrawerTabNavigation from "./navigation/DrawerTabNavigation";
 import {store} from "./state/store";
 import {Provider} from "react-redux";
 import {useFonts} from 'expo-font';
+import {Keyboard, TouchableWithoutFeedback} from "react-native";
 
 
 export default function App() {
@@ -21,11 +22,13 @@ export default function App() {
 
     return (
         <>
-            <Provider store={store}>
-                <NavigationContainer>
-                    <DrawerTabNavigation/>
-                </NavigationContainer>
-            </Provider>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                <Provider store={store}>
+                    <NavigationContainer>
+                        <DrawerTabNavigation/>
+                    </NavigationContainer>
+                </Provider>
+            </TouchableWithoutFeedback>
         </>
     );
 }

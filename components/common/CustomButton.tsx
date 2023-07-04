@@ -1,15 +1,9 @@
-import React, {CSSProperties} from "react";
+import React from "react";
 import {TouchableOpacity} from "react-native";
 import styled from "@emotion/native";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
-
-interface CustomButtonInterface {
-    onPress: () => void
-    text: string
-    revert?: boolean
-    style?: CSSProperties
-}
+import {CustomButtonInterface} from "../../constants/interfaces";
 
 const ButtonContent = styled.View<{ revert?: boolean }>`
   background-color: ${p => p.revert ? colors.softGreen : colors.blue};
