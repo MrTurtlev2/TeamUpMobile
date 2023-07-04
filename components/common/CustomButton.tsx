@@ -2,6 +2,7 @@ import React, {CSSProperties} from "react";
 import {TouchableOpacity} from "react-native";
 import styled from "@emotion/native";
 import colors from "../../constants/colors";
+import fonts from "../../constants/fonts";
 
 interface CustomButtonInterface {
     onPress: () => void
@@ -22,6 +23,7 @@ const ButtonContent = styled.View<{ revert?: boolean }>`
 const ButtonText = styled.Text<{ revert?: boolean }>`
   font-size: 18px;
   color: ${p => p.revert ? colors.black : colors.white};
+  font-family: ${fonts.bold};
 `
 
 const CustomButton = ({onPress, text, revert, style}: CustomButtonInterface) => {
