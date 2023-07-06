@@ -33,7 +33,6 @@ export const loginUser = createAsyncThunk('/Login', async ({
         })
         .then((res) => {
             AsyncStorage.setItem('token', res.data.accessToken);
-            AsyncStorage.setItem('user', JSON.stringify(res.data.roles));
 
             AsyncStorage.setItem(
                 'userData',
