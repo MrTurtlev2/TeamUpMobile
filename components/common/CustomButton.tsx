@@ -22,6 +22,7 @@ const ButtonText = styled.Text<{ revert?: boolean }>`
 
 const CustomButton = ({onPress, text, revert, style, disabled}: CustomButtonInterface) => {
     return (
+        // @ts-ignore
         <TouchableOpacity style={style} onPress={disabled ? null : onPress}>
             <ButtonContent revert={revert} disabled={disabled}>
                 <ButtonText revert={revert}>{text}</ButtonText>
