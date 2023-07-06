@@ -3,8 +3,9 @@ export default {
     white: '#ffffff',
     black: '#000000',
     blue: '#2E6FF2',
+    disabled: '#00000049',
     softGrey: '#D7D9D8',
-    softGreen: '#47A992',
+    softGreen: '#3ACAA8',
 
     orange: '#C07449',
     lightGrey: '#E7E7E7',

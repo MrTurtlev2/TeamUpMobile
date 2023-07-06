@@ -1,21 +1,21 @@
-import DrawerContent from "./DrawerContent";
-import React from "react";
-import {createDrawerNavigator, DrawerContentScrollView} from '@react-navigation/drawer';
-import styled from "@emotion/native";
-import {Dimensions, Text} from "react-native";
-import colors from "../constants/colors";
-import {TAB_NAVIGATOR} from "../constants/routeName";
-import TabNavigator from "./TabNavigator";
+import DrawerContent from './DrawerContent';
+import React from 'react';
+import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
+import styled from '@emotion/native';
+import { Dimensions, Text } from 'react-native';
+import colors from '../constants/colors';
+import { TAB_NAVIGATOR } from '../constants/routeName';
+import TabNavigator from './TabNavigator';
 
 const DrawerScrollView = styled(DrawerContentScrollView)`
-  height: ${Dimensions.get('window').height + 'px'};
-  background-color: ${colors.mainBrown}
+    height: ${Dimensions.get('window').height + 'px'};
+    background-color: ${colors.mainBrown};
 `;
 const DrawerCloseButton = styled.TouchableOpacity`
-  position: absolute;
-  bottom: 0;
-  right: 30px;
-  padding: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    padding: 30px;
 `;
 
 function CustomDrawerContent(props: any) {
@@ -31,26 +31,19 @@ function CustomDrawerContent(props: any) {
     );
 }
 
-
 const DrawerTabNavigation = () => {
     const Drawer = createDrawerNavigator();
 
     return (
         <Drawer.Navigator
-            drawerContent={({navigation}) => <CustomDrawerContent navigation={navigation}/>}
+            drawerContent={({ navigation }) => <CustomDrawerContent navigation={navigation} />}
             backBehavior="history"
             screenOptions={{
                 drawerPosition: 'right',
                 headerShown: false,
-            }}
-        >
-            <Drawer.Screen
-                name={TAB_NAVIGATOR}
-            >
-                {(props) => <TabNavigator {...props} navigation={props.navigation}/>}
-            </Drawer.Screen>
-
+            }}>
+            <Drawer.Screen name={TAB_NAVIGATOR}>{props => <TabNavigator {...props} navigation={props.navigation} />}</Drawer.Screen>
         </Drawer.Navigator>
     );
-}
+};
 export default DrawerTabNavigation;

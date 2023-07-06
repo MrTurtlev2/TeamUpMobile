@@ -1,33 +1,33 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import styled from '@emotion/native';
 import colors from '../../constants/colors';
-import {Animated, Keyboard, TouchableWithoutFeedback} from 'react-native';
-import {CustomInputInterface} from '../../constants/interfaces';
-import fonts from "../../constants/fonts";
+import { Animated, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { CustomInputInterface } from '../../constants/interfaces';
+import fonts from '../../constants/fonts';
 
 const CustomInputWrapper = styled.View`
-  width: 250px;
+    width: 250px;
 `;
 const LabelWrapper = styled(Animated.View)`
-  position: absolute;
-  left: 15px;
-  top: 16px;
-  background-color: ${colors.softGrey};
-  z-index: 2;
-  padding: 0 5px;
+    position: absolute;
+    left: 15px;
+    top: 16px;
+    background-color: ${colors.white};
+    z-index: 2;
+    padding: 0 5px;
 `;
 const Label = styled(Animated.Text)`
-  font-family: ${fonts.bold};
+    font-family: ${fonts.bold};
 `;
 
 const StyledTextInput = styled.TextInput<{ isError: boolean }>`
-  border: 2px solid ${p => (p.isError ? 'red' : colors.black)};
-  border-radius: 12px;
-  padding: 10px 15px 10px 24px;
-  font-weight: 600;
+    border: 2px solid ${p => (p.isError ? 'red' : colors.black)};
+    border-radius: 12px;
+    padding: 10px 15px 10px 24px;
+    font-weight: 600;
 `;
 
-const CustomInput = ({onChangeText, value, labelText, isError, secureTextEntry, style}: CustomInputInterface) => {
+const CustomInput = ({ onChangeText, value, labelText, isError, secureTextEntry, style }: CustomInputInterface) => {
     const focusAnim = useRef(new Animated.Value(-1)).current;
     const animatedTextScale = useRef(new Animated.Value(1.1)).current;
     const handleInputFocus = () => {
@@ -63,12 +63,11 @@ const CustomInput = ({onChangeText, value, labelText, isError, secureTextEntry, 
     };
 
     return (
-        // @ts-ignore
         <CustomInputWrapper style={style}>
             {labelText && (
                 <TouchableWithoutFeedback onPress={() => handleInputFocus()}>
-                    <LabelWrapper style={{transform: [{translateY: focusAnim}]}}>
-                        <Label style={{transform: [{scale: animatedTextScale}]}}>{labelText}</Label>
+                    <LabelWrapper style={{ transform: [{ translateY: focusAnim }] }}>
+                        <Label style={{ transform: [{ scale: animatedTextScale }] }}>{labelText}</Label>
                     </LabelWrapper>
                 </TouchableWithoutFeedback>
             )}

@@ -1,4 +1,4 @@
-import {CSSProperties} from "react";
+import {StyleProp, ViewStyle} from 'react-native';
 
 export interface NavigationInterface {
     navigate: (navigator: string, screen?: { screen: string }) => void;
@@ -9,13 +9,21 @@ export interface CustomInputInterface {
     value: string;
     labelText?: string;
     isError?: boolean;
-    style?: CSSProperties
-    secureTextEntry?: boolean
+    style?: StyleProp<ViewStyle>;
+    secureTextEntry?: boolean;
 }
 
 export interface CustomButtonInterface {
-    onPress: () => void
-    text: string
-    revert?: boolean
-    style?: CSSProperties
+    onPress: () => void;
+    text: string;
+    revert?: boolean;
+    style?: StyleProp<ViewStyle>;
+    disabled?: boolean
+}
+
+export interface CustomCheckboxInterface {
+    state: boolean;
+    onPress: () => void;
+    label: string;
+    style?: StyleProp<ViewStyle>;
 }
