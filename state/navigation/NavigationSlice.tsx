@@ -1,5 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
-
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface NavigationSliceInterface {
     isOnboardingCompleted: boolean;
@@ -15,11 +14,10 @@ export const navigationSlice = createSlice({
     reducers: {
         handleOnboardingCompleted: (state, action) => {
             state.isOnboardingCompleted = action.payload;
-        }
+        },
     },
     extraReducers: {},
-
 });
 
-export const {handleOnboardingCompleted} = navigationSlice.actions
+export const { handleOnboardingCompleted } = navigationSlice.actions;
 export default navigationSlice.reducer;

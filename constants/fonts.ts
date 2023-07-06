@@ -3,5 +3,5 @@ export default {
     light: 'Light',
     medium: 'Medium',
     regular: 'Regular',
-    semi: 'Semi'
-}
+    semi: 'Semi',
+};

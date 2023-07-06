@@ -1,28 +1,28 @@
-import React from "react";
-import colors from "../constants/colors";
-import styled from "@emotion/native";
-import ProfileIcon from "../assets/icons/ProfileIcon";
-import HomeIcon from "../assets/icons/HomeIcon";
+import React from 'react';
+import colors from '../constants/colors';
+import styled from '@emotion/native';
+import ProfileIcon from '../assets/icons/ProfileIcon';
+import HomeIcon from '../assets/icons/HomeIcon';
 
 const TabBarWrapper = styled.View`
-  height: 73px;
-  background-color: ${colors.mainBrown};
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+    height: 73px;
+    background-color: ${colors.mainBrown};
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 `;
 const TabBarItem = styled.TouchableOpacity`
-  padding: 0 20px;
-  justify-content: center;
+    padding: 0 20px;
+    justify-content: center;
 `;
 
-const TabBar = ({state, descriptors, navigation}: any) => {
+const TabBar = ({ state, descriptors, navigation }: any) => {
     const focusedColor = `${colors.orange}`;
     const unfocusedColor = `${colors.lightGrey}`;
     return (
         <TabBarWrapper>
             {state.routes.map((route: any, index: any) => {
-                const {options} = descriptors[route.key];
+                const { options } = descriptors[route.key];
                 const label = options.tabBarLabel !== undefined ? options.tabBarLabel : options.title !== undefined ? options.title : route.name;
                 const isFocused = state.index === index;
 
@@ -36,7 +36,7 @@ const TabBar = ({state, descriptors, navigation}: any) => {
                     });
 
                     if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate({name: route.name, merge: true});
+                        navigation.navigate({ name: route.name, merge: true });
                     }
                 };
 
@@ -48,15 +48,15 @@ const TabBar = ({state, descriptors, navigation}: any) => {
                 };
 
                 const iconsArray = [
-                    <HomeIcon key={0} color={isFocused ? focusedColor : unfocusedColor}/>,
-                    <HomeIcon key={1} color={isFocused ? focusedColor : unfocusedColor}/>,
+                    <HomeIcon key={0} color={isFocused ? focusedColor : unfocusedColor} />,
+                    <HomeIcon key={1} color={isFocused ? focusedColor : unfocusedColor} />,
                 ];
                 return (
                     <React.Fragment key={index}>
                         {shouldDisplay ? (
                             <TabBarItem
                                 accessibilityRole="button"
-                                accessibilityState={isFocused ? {selected: true} : {}}
+                                accessibilityState={isFocused ? { selected: true } : {}}
                                 accessibilityLabel={options.tabBarAccessibilityLabel}
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
@@ -69,7 +69,7 @@ const TabBar = ({state, descriptors, navigation}: any) => {
                 );
             })}
             <TabBarItem onPress={() => navigation.openDrawer()}>
-                <ProfileIcon/>
+                <ProfileIcon />
             </TabBarItem>
         </TabBarWrapper>
     );
