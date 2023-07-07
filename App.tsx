@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import DrawerTabNavigation from './navigation/DrawerTabNavigation';
-import { store } from './state/store';
-import { Provider } from 'react-redux';
-import { useFonts } from 'expo-font';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import {store} from './state/store';
+import {Provider} from 'react-redux';
+import {useFonts} from 'expo-font';
+import {Keyboard, TouchableWithoutFeedback, View} from 'react-native';
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -20,14 +20,14 @@ export default function App() {
     }
 
     return (
-        <>
+        <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <Provider store={store}>
                     <NavigationContainer>
-                        <DrawerTabNavigation />
+                        <DrawerTabNavigation/>
                     </NavigationContainer>
                 </Provider>
             </TouchableWithoutFeedback>
-        </>
+        </View>
     );
 }
