@@ -9,6 +9,7 @@ const Wrapper = styled.View<{ barHeight: number }>`
   flex: 1;
   padding-top: ${p => p.barHeight + 'px'};
   background-color: ${colors.white};
+  align-items: center;
 `
 
 const Layout = ({children}: any) => {
