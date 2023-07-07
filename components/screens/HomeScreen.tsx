@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import {Text} from 'react-native';
+import Layout from "../common/Layout";
 
 const HomeScreen = () => {
     return (
-        <View>
+        <Layout>
             <Text>HomeScreen</Text>
-        </View>
+
+        </Layout>
     );
 };
 export default HomeScreen;
