@@ -27,3 +27,13 @@ export interface CustomCheckboxInterface {
     label: string;
     style?: StyleProp<ViewStyle>;
 }
+
+export interface TimeBarInterface {
+    timeFrom: string;
+    timeTo: string
+}
+
+export interface ProposedPersonBarInterface extends TimeBarInterface {
+    nick: string
+    games: string[]
+}
