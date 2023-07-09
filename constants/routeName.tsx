@@ -9,4 +9,8 @@ export enum OnboardRoutes {
     LOGIN_OR_SIGNUP = 'LoginOrSignUpScreen',
     LOGIN = 'LoginScreen',
     REGISTER = 'RegisterScreen',
+    INITIAL_SETUP = 'InitialSetupScreen',
+
+    SET_GAMES = 'SetGamesScreen',
+    SET_NICK = 'SetNickScreen'
 }

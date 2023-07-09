@@ -11,6 +11,7 @@ export interface CustomInputInterface {
     isError?: boolean;
     style?: StyleProp<ViewStyle>;
     secureTextEntry?: boolean;
+    keyboardType?: string;
 }
 
 export interface CustomButtonInterface {

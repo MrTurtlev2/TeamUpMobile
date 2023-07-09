@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import CustomButton from '../common/CustomButton';
-import OnboardLayout from '../common/OnboardLayout';
 import styled from '@emotion/native/dist/emotion-native.cjs';
-import CustomInput from '../common/CustomInput';
-import {useAppDispatch} from '../../state/hooks';
-import {loginUser} from "../../state/authorization/UserLoginSlice";
+import {useAppDispatch} from "../../../state/hooks";
+import {loginUser} from "../../../state/authorization/UserLoginSlice";
+import OnboardLayout from "../../common/OnboardLayout";
+import CustomInput from "../../common/CustomInput";
+import CustomButton from "../../common/CustomButton";
 
 const ButtonsWrapper = styled.View`
   height: 100%;
@@ -31,7 +31,7 @@ const LoginScreen = () => {
     return (
         <OnboardLayout>
             <ButtonsWrapper>
-                <CustomInput isError={inputError} value={nick} onChangeText={text => setNick(text)} labelText="Nick"/>
+                <CustomInput isError={inputError} value={nick} onChangeText={text => setNick(text)} labelText="Email"/>
                 <CustomInput
                     isError={inputError}
                     value={password}
