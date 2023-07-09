@@ -7,11 +7,14 @@ import {OnboardRoutes, Routes} from '../constants/routeName';
 import {useAppDispatch, useAppSelector} from '../state/hooks';
 import LoginOrSignUpScreen from '../components/screens/LoginOrSignUpScreen';
 import {createStackNavigator} from '@react-navigation/stack';
-import LoginScreen from '../components/screens/LoginScreen';
-import RegisterScreen from '../components/screens/RegisterScreen';
 import LoadingModal from "../components/common/LoadingModal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {loginUser} from "../state/authorization/UserLoginSlice";
+import InitialSetupScreen from "../components/screens/onboarding/InitialSetupScreen";
+import LoginScreen from "../components/screens/onboarding/LoginScreen";
+import RegisterScreen from "../components/screens/onboarding/RegisterScreen";
+import SetGamesScreen from "../components/screens/onboarding/SetGamesScreen";
+import SetNickScreen from "../components/screens/onboarding/SetNickScreen";
 
 const OnboardStackNavigator = () => {
     const Stack = createStackNavigator();
@@ -42,12 +45,37 @@ const OnboardStackNavigator = () => {
                 })}>
                 {() => <RegisterScreen/>}
             </Stack.Screen>
+            <Stack.Screen
+                name={OnboardRoutes.INITIAL_SETUP}
+                options={() => ({
+                    headerShown: false,
+                    presentation: 'modal',
+                })}>
+                {() => <InitialSetupScreen/>}
+            </Stack.Screen>
+            <Stack.Screen
+                name={OnboardRoutes.SET_GAMES}
+                options={() => ({
+                    headerShown: false,
+                    presentation: 'modal',
+                })}>
+                {() => <SetGamesScreen/>}
+            </Stack.Screen>
+            <Stack.Screen
+                name={OnboardRoutes.SET_NICK}
+                options={() => ({
+                    headerShown: false,
+                    presentation: 'modal',
+                })}>
+                {() => <SetNickScreen/>}
+            </Stack.Screen>
         </Stack.Navigator>
     );
 };
 
 const MainNavigator = ({navigation}: any) => {
     const {isLoggedIn, isAuthLoading} = useAppSelector(state => state.ReduxAuth);
+    const {isRegistered, isRegistrationLoading} = useAppSelector(state => state.ReduxRegister);
     const Tab = createBottomTabNavigator();
     const dispatch = useAppDispatch()
 
@@ -65,8 +93,8 @@ const MainNavigator = ({navigation}: any) => {
 
     return (
         <>
-            {isAuthLoading && <LoadingModal/>}
-            {isLoggedIn ? (
+            {(isAuthLoading || isRegistrationLoading) && <LoadingModal/>}
+            {(isLoggedIn || isRegistered) ? (
                 <Tab.Navigator
                     backBehavior="history"
                     initialRouteName={Routes.HOME}

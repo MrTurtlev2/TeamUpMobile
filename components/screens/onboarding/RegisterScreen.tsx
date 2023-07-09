@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
-import CustomButton from '../common/CustomButton';
-import OnboardLayout from '../common/OnboardLayout';
+import {useState} from "react";
 import styled from '@emotion/native/dist/emotion-native.cjs';
-import CustomInput from '../common/CustomInput';
-import {useAppDispatch} from '../../state/hooks';
-import {handleOnboardingCompleted} from '../../state/navigation/NavigationSlice';
-import CustomCheckbox from '../common/CustomCheckbox';
+import {useAppDispatch} from "../../../state/hooks";
+import OnboardLayout from "../../common/OnboardLayout";
+import CustomInput from "../../common/CustomInput";
+import CustomCheckbox from "../../common/CustomCheckbox";
+import CustomButton from "../../common/CustomButton";
+import {useNavigation} from "@react-navigation/native";
+import {OnboardRoutes} from "../../../constants/routeName";
+import {NavigationInterface} from "../../../constants/interfaces";
+import {setEmailRedux, setPasswordRedux} from "../../../state/authorization/UserRegisterSlice";
 
 const ButtonsWrapper = styled.View`
   height: 100%;
@@ -13,20 +16,27 @@ const ButtonsWrapper = styled.View`
 `;
 
 const RegisterScreen = () => {
-    const [nick, setNick] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordSecond, setPasswordSecond] = useState('');
     const [regulationsAccepted, setRegulationsAccepted] = useState(false);
 
     const [inputError, setInputError] = useState(false);
 
+    const {navigate} = useNavigation<NavigationInterface>();
     const dispatch = useAppDispatch();
     const marginTop = 30;
+    const handleNextStep = () => {
+        dispatch(setEmailRedux(email))
+        dispatch(setPasswordRedux(password))
+        navigate(OnboardRoutes.SET_NICK)
+    }
 
     return (
         <OnboardLayout>
             <ButtonsWrapper>
-                <CustomInput isError={inputError} value={nick} onChangeText={text => setNick(text)} labelText="Nick"/>
+                <CustomInput isError={inputError} value={email} onChangeText={text => setEmail(text)}
+                             labelText="Email"/>
                 <CustomInput
                     isError={inputError}
                     value={password}
@@ -49,7 +59,9 @@ const RegisterScreen = () => {
                     label={'Akceptuję regulamin'}
                     style={{marginTop}}
                 />
-                <CustomButton onPress={() => dispatch(handleOnboardingCompleted(true))} text={'Zarejestruj się'} revert
+                <CustomButton onPress={() => handleNextStep()}
+                              text={'Zarejestruj się'}
+                              revert
                               style={{marginTop}}
                               disabled={!regulationsAccepted}
                 />

@@ -63,14 +63,13 @@ export const userLoginSlice = createSlice({
         builder.addCase(loginUser.fulfilled, (state) => {
             state.isAuthLoading = false;
             state.isLoggedIn = true;
-            console.log('loooooguuujjjee')
         });
         builder.addCase(loginUser.rejected, (state, action) => {
             state.isAuthLoading = false;
             // @ts-ignore
             state.error = action.error;
             state.isLoggedIn = false;
-            console.log(action.error)
+            // console.log(action.error)
         });
     },
 });
