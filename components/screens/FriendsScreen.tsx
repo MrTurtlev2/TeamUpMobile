@@ -6,7 +6,7 @@ import styled from "@emotion/native";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
-import {getRecommendedPeopleAsync} from '../../service/friendsService';
+import {getFriendsListAsync} from '../../service/friendsService';
 
 const ScreenHeader = styled.Text`
   font-size: 20px;
@@ -16,29 +16,29 @@ const ScreenHeader = styled.Text`
 `
 
 const FriendsScreen = () => {
-    const {recommendedPeopleList, isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
+    const {friendsList, isFriendListLoading} = useAppSelector(state => state.ReduxFriendsList);
     const dispatch = useAppDispatch();
 
 
     useEffect(() => {
-        dispatch(getRecommendedPeopleAsync())
+        dispatch(getFriendsListAsync())
     }, [])
 
     return (
         <Layout>
-            <ScreenHeader> Z kim chcesz dziś zagrać?</ScreenHeader>
+            <ScreenHeader>Lista twoich znajomych</ScreenHeader>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
-                data={recommendedPeopleList}
+                data={friendsList}
                 ListHeaderComponent={() => <View style={{height: 30}}/>}
                 renderItem={({item}: any) => <ProposedPersonBar {...item}/>}
                 keyExtractor={(item: any) => item.id}
                 refreshControl={
                     <RefreshControl
                         enabled={true}
-                        onRefresh={() => dispatch(getRecommendedPeopleAsync())}
-                        refreshing={isRecommendedPeopleLoading}
+                        onRefresh={() => dispatch(getFriendsListAsync())}
+                        refreshing={isFriendListLoading}
                         tintColor={`${colors.blue}`}
                         colors={[`${colors.white}`]}
                         progressBackgroundColor={`${colors.blue}`}
