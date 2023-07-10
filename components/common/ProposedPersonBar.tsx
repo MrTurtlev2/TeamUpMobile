@@ -1,10 +1,10 @@
 import React from "react";
-import {Dimensions, ImageBackground, Text} from "react-native";
+import {Dimensions, ImageBackground} from "react-native";
 import styled from "@emotion/native";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
 import TimeBar from "../persons/TimeBar";
-import {ProposedPersonBarInterface} from "../../constants/interfaces";
+import {ProposedPersonsInterface} from "../../constants/interfaces";
 
 const GhostWrapper = styled.View`
   width: ${Dimensions.get('screen').width + 'px'};
@@ -71,7 +71,16 @@ const GameBox = styled.View`
   margin-right: 5px;
 `
 
-const ProposedPersonBar = ({nick, timeFrom, timeTo, games}: ProposedPersonBarInterface) => {
+const ProposedPersonBar = ({
+                               email,
+                               username,
+                               endHour,
+                               startHour,
+                               age,
+                               id,
+                               gamesList,
+                               friendsList
+                           }: ProposedPersonsInterface) => {
 
     return (
         <GhostWrapper>
@@ -80,16 +89,16 @@ const ProposedPersonBar = ({nick, timeFrom, timeTo, games}: ProposedPersonBarInt
                     <StyledBgImage source={require('../../assets/png/PersonBarBg.png')} resizeMode="stretch"/>
                 </BgImageWrapper>
                 <NickWrapper>
-                    <Nick>{nick}</Nick>
+                    <Nick>{username}</Nick>
                 </NickWrapper>
                 <Content>
-                    <TimeBar timeFrom={timeFrom} timeTo={timeTo}/>
+                    <TimeBar startHour={startHour} endHour={endHour}/>
                     <FavouriteGames>
-                        {games.map((game: string, index) => (
-                            <GameBox key={index}>
-                                <Text>{game}</Text>
-                            </GameBox>
-                        ))}
+                        {/*{gamesList.map((game: string, index) => (*/}
+                        {/*    <GameBox key={index}>*/}
+                        {/*        <Text>{game}</Text>*/}
+                        {/*    </GameBox>*/}
+                        {/*))}*/}
                     </FavouriteGames>
                 </Content>
                 <AvatarWrapper>

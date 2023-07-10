@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axiosInstance from '../../helpers/axiosInstance';
+import axiosInstance from "../../helpers/axiosInstance";
 
 export interface UserState {
     isAuthLoading: boolean;
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk('/Login', async ({
             password: password,
         })
         .then((res) => {
-            AsyncStorage.setItem('token', res.data.accessToken);
+            AsyncStorage.setItem('token', res.data.token);
 
             AsyncStorage.setItem(
                 'userData',

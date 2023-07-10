@@ -15,13 +15,13 @@ const Hours = styled.Text`
   margin-left: 6px;
 `
 
-const TimeBar = ({timeFrom, timeTo}: TimeBarInterface) => {
+const TimeBar = ({startHour, endHour}: TimeBarInterface) => {
 
     return (
         <BarWrapper>
             <ClockSvg/>
             <Hours>
-                {`${timeFrom}-${timeTo}`}
+                {`${startHour}-${endHour}`}
             </Hours>
         </BarWrapper>
     )

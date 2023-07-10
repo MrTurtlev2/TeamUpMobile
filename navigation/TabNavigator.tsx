@@ -76,6 +76,7 @@ const OnboardStackNavigator = () => {
 const MainNavigator = ({navigation}: any) => {
     const {isLoggedIn, isAuthLoading} = useAppSelector(state => state.ReduxAuth);
     const {isRegistered, isRegistrationLoading} = useAppSelector(state => state.ReduxRegister);
+    const {isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
     const Tab = createBottomTabNavigator();
     const dispatch = useAppDispatch()
 
@@ -93,7 +94,7 @@ const MainNavigator = ({navigation}: any) => {
 
     return (
         <>
-            {(isAuthLoading || isRegistrationLoading) && <LoadingModal/>}
+            {(isAuthLoading || isRegistrationLoading || isRecommendedPeopleLoading) && <LoadingModal/>}
             {(isLoggedIn || isRegistered) ? (
                 <Tab.Navigator
                     backBehavior="history"
