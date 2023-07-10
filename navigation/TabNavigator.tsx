@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import HomeScreen from '../components/screens/HomeScreen';
-import ProfileScreen from '../components/screens/ProfileScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 import {OnboardRoutes, Routes} from '../constants/routeName';
@@ -15,6 +14,7 @@ import LoginScreen from "../components/screens/onboarding/LoginScreen";
 import RegisterScreen from "../components/screens/onboarding/RegisterScreen";
 import SetGamesScreen from "../components/screens/onboarding/SetGamesScreen";
 import SetNickScreen from "../components/screens/onboarding/SetNickScreen";
+import FriendsScreen from "../components/screens/FriendsScreen";
 
 const OnboardStackNavigator = () => {
     const Stack = createStackNavigator();
@@ -104,7 +104,7 @@ const MainNavigator = ({navigation}: any) => {
                     }}
                     tabBar={props => <TabBar {...props} />}>
                     <Tab.Screen name="Home" component={HomeScreen}/>
-                    <Tab.Screen name="Settings" component={ProfileScreen}/>
+                    <Tab.Screen name={Routes.FRIENDS} component={FriendsScreen}/>
                 </Tab.Navigator>
             ) : (
                 <OnboardStackNavigator/>

@@ -15,7 +15,7 @@ const ScreenHeader = styled.Text`
   margin-top: 20px;
 `
 
-const HomeScreen = () => {
+const FriendsScreen = () => {
     const {recommendedPeopleList, isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
     const dispatch = useAppDispatch();
 
@@ -48,4 +48,4 @@ const HomeScreen = () => {
         </Layout>
     );
 };
-export default HomeScreen;
+export default FriendsScreen;
