@@ -10,10 +10,6 @@ const initialState: UserState = {
     isGamesLoading: false,
     gamesList: []
 };
-
-// export const getAllGamesAsync = createAsyncThunk('/Game', async () => {
-//     await axiosInstance.get('/api/v1/Game').then(gameList => gameList)
-// })
 export const allGamesSlice = createSlice({
     name: 'allGames',
     initialState: initialState,
@@ -24,16 +20,12 @@ export const allGamesSlice = createSlice({
         });
         builder.addCase(getAllGamesAsync.fulfilled, (state, action) => {
             state.isGamesLoading = false;
-            // @ts-ignore
-            // state.gamesList.push(action.payload)
             state.gamesList = action.payload
-            // console.log(action.payload)
         });
         builder.addCase(getAllGamesAsync.rejected, (state, action) => {
             state.isGamesLoading = false;
             // @ts-ignore
             state.error = action.error;
-            // console.log(action.error)
         });
     },
 });

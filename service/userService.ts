@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import axiosInstance from "../helpers/axiosInstance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axiosInstance from "../helpers/axiosInstance";
 
 export const registerUserAsync = createAsyncThunk(
     '/api/v1/Register', async ({
@@ -23,7 +23,7 @@ export const registerUserAsync = createAsyncThunk(
             endHour,
             gamesList
         }).then(response => {
-            AsyncStorage.setItem('token', response.data.accessToken);
+            AsyncStorage.setItem('token', response.data.token);
 
             AsyncStorage.setItem(
                 'userData',
@@ -31,7 +31,6 @@ export const registerUserAsync = createAsyncThunk(
                     email: email,
                     password: password,
                 }))
-            // console.log(response)
             return response.data
         });
     })

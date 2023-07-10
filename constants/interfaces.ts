@@ -30,11 +30,17 @@ export interface CustomCheckboxInterface {
 }
 
 export interface TimeBarInterface {
-    timeFrom: string;
-    timeTo: string
+    endHour: number,
+    startHour: number,
 }
 
-export interface ProposedPersonBarInterface extends TimeBarInterface {
-    nick: string
-    games: string[]
+export interface ProposedPersonsInterface {
+    age: number,
+    email: string,
+    endHour: number,
+    friendsList: object[]
+    gamesList: object[]
+    id: string
+    startHour: number,
+    username: string
 }
