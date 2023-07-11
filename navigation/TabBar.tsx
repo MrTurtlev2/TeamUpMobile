@@ -5,12 +5,13 @@ import ProfileSvg from "../assets/svg/navigation/ProfileSvg";
 import FindPeopleSVG from "../assets/svg/navigation/FindPeopleSvg";
 import {Dimensions} from "react-native";
 
-const TabGhostWrapper = styled.View`
+const TabGhostWrapper = styled.View<{ hideNavBar?: boolean }>`
   position: absolute;
   bottom: 7px;
   left: 0;
   width: ${Dimensions.get('screen').width + 'px'};
   align-items: center;
+  display: ${p => p.hideNavBar ? 'none' : 'flex'};
 `;
 
 const TabBarWrapper = styled.View`
@@ -31,6 +32,8 @@ const TabBarItem = styled.TouchableOpacity`
 const TabBar = ({state, descriptors, navigation}: any) => {
     const focusedColor = `${colors.white}`;
     const unfocusedColor = `${colors.darkBlue}`;
+
+
     return (
         <TabGhostWrapper>
             <TabBarWrapper>
@@ -39,7 +42,7 @@ const TabBar = ({state, descriptors, navigation}: any) => {
                     const label = options.tabBarLabel !== undefined ? options.tabBarLabel : options.title !== undefined ? options.title : route.name;
                     const isFocused = state.index === index;
 
-                    const shouldDisplay = index < 3;
+                    const shouldDisplay = index < 2;
 
                     const onPress = () => {
                         const event = navigation.emit({

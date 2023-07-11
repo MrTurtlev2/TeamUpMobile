@@ -43,4 +43,5 @@ export interface ProposedPersonsInterface {
     id: string
     startHour: number,
     username: string
+    isFriend?: boolean
 }

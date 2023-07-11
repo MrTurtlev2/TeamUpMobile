@@ -15,10 +15,9 @@ const ScreenHeader = styled.Text`
   margin-top: 20px;
 `
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
     const {recommendedPeopleList, isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
     const dispatch = useAppDispatch();
-
 
     useEffect(() => {
         dispatch(getRecommendedPeopleAsync())
@@ -32,6 +31,7 @@ const HomeScreen = () => {
                 showsHorizontalScrollIndicator={false}
                 data={recommendedPeopleList}
                 ListHeaderComponent={() => <View style={{height: 30}}/>}
+                ListFooterComponent={() => <View style={{height: 110}}/>}
                 renderItem={({item}: any) => <ProposedPersonBar {...item}/>}
                 keyExtractor={(item: any) => item.id}
                 refreshControl={

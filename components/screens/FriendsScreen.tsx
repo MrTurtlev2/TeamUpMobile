@@ -32,7 +32,8 @@ const FriendsScreen = () => {
                 showsHorizontalScrollIndicator={false}
                 data={friendsList}
                 ListHeaderComponent={() => <View style={{height: 30}}/>}
-                renderItem={({item}: any) => <ProposedPersonBar {...item}/>}
+                ListFooterComponent={() => <View style={{height: 110}}/>}
+                renderItem={({item}: any) => <ProposedPersonBar {...item} isFriend/>}
                 keyExtractor={(item: any) => item.id}
                 refreshControl={
                     <RefreshControl

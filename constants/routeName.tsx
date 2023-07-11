@@ -4,6 +4,7 @@ export enum Routes {
     HOME = 'Home',
     FRIENDS = 'FriendsScreen',
     PROFILE = 'PROFILE',
+    PERSON_DETAILS = 'SelectedPersonScreen'
 }
 
 export enum OnboardRoutes {
