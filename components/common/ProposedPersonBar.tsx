@@ -1,12 +1,14 @@
 import React from "react";
-import {Dimensions, ImageBackground} from "react-native";
+import {Dimensions, ImageBackground, Text} from "react-native";
 import styled from "@emotion/native";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
 import TimeBar from "../persons/TimeBar";
 import {ProposedPersonsInterface} from "../../constants/interfaces";
+import {useNavigation} from "@react-navigation/native";
+import {Routes} from "../../constants/routeName";
 
-const GhostWrapper = styled.View`
+const GhostWrapper = styled.TouchableOpacity`
   width: ${Dimensions.get('screen').width + 'px'};
   align-items: center;
   margin-top: 60px;
@@ -32,7 +34,6 @@ const StyledBgImage = styled(ImageBackground)`
   opacity: 0.2;
 `;
 const AvatarWrapper = styled.View`
-  background-color: blue;
   width: 90px;
   height: 90px;
   position: absolute;
@@ -47,6 +48,7 @@ const Avatar = styled.Image`
 `
 const NickWrapper = styled.View`
   flex-direction: row-reverse;
+  align-items: center;
 `
 const Nick = styled.Text`
   font-family: ${fonts.bold};
@@ -62,13 +64,22 @@ const FavouriteGames = styled.View`
   padding-left: 20px;
 `
 const GameBox = styled.View`
-  width: 60px;
+  width: 70px;
   padding: 20px 0;
   background-color: ${colors.softGreen};
   justify-content: center;
   align-items: center;
   border-radius: 6px;
   margin-right: 5px;
+`
+const AddFriendButton = styled.View`
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: red;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 `
 
 const ProposedPersonBar = ({
@@ -79,26 +90,42 @@ const ProposedPersonBar = ({
                                age,
                                id,
                                gamesList,
-                               friendsList
+                               friendsList,
+                               isFriend,
                            }: ProposedPersonsInterface) => {
 
+    const {navigate} = useNavigation()
+
+
     return (
-        <GhostWrapper>
+        // @ts-ignore
+        <GhostWrapper onPress={() => navigate(Routes.PERSON_DETAILS, {
+            email,
+            username,
+            endHour,
+            startHour,
+            age,
+            id,
+            gamesList,
+            friendsList,
+            isFriend
+        })}>
             <BarWrapper>
                 <BgImageWrapper>
                     <StyledBgImage source={require('../../assets/png/PersonBarBg.png')} resizeMode="stretch"/>
                 </BgImageWrapper>
+
                 <NickWrapper>
                     <Nick>{username}</Nick>
                 </NickWrapper>
                 <Content>
                     <TimeBar startHour={startHour} endHour={endHour}/>
                     <FavouriteGames>
-                        {/*{gamesList.map((game: string, index) => (*/}
-                        {/*    <GameBox key={index}>*/}
-                        {/*        <Text>{game}</Text>*/}
-                        {/*    </GameBox>*/}
-                        {/*))}*/}
+                        {gamesList.map((item: any, index) => (
+                            <GameBox key={index}>
+                                <Text>{item.name}</Text>
+                            </GameBox>
+                        ))}
                     </FavouriteGames>
                 </Content>
                 <AvatarWrapper>

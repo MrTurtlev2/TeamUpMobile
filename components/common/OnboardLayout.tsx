@@ -4,6 +4,7 @@ import styled from '@emotion/native';
 import Logo from '../../assets/icons/Logo';
 import colors from '../../constants/colors';
 import CurvedSvg from '../../assets/CurvedBg';
+import BackArrowSvg from "../../assets/svg/BackArrowSvg";
 
 const ScreenHeight = Dimensions.get('screen').height;
 const ScreenWidth = Dimensions.get('screen').width;
@@ -41,18 +42,29 @@ const BottomSubContent = styled.View`
   align-items: center;
   height: ${ScreenHeight * 0.65 - 140 + 'px'};
 `;
+const BackArrowWrap = styled.TouchableOpacity`
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  z-index: 2;
+`;
 
-const OnboardLayout = ({children}: any) => {
+const OnboardLayout = ({children, hideLogo, goBack}: any) => {
     return (
         <ScrollView style={{flex: 1}}>
             <View style={{flex: 1}}>
+                {hideLogo && (
+                    <BackArrowWrap onPress={goBack}>
+                        <BackArrowSvg/>
+                    </BackArrowWrap>
+                )}
                 <TopBlock>
                     <StyledBgImage source={require('../../assets/png/onboardBg.png')} resizeMode="cover"/>
                 </TopBlock>
                 <BottomBlock>
                     <BgImageWrapper>
                         <BottomContent>
-                            <Logo/>
+                            {!hideLogo && <Logo/>}
                             <BottomSubContent>{children}</BottomSubContent>
                         </BottomContent>
                         <CurvedSvg/>
