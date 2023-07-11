@@ -2,24 +2,56 @@ import React from 'react';
 import styled from '@emotion/native/dist/emotion-native.cjs';
 import {useAppDispatch} from "../../state/hooks";
 import OnboardLayout from "../common/OnboardLayout";
-import CustomButton from "../common/CustomButton";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../constants/routeName";
 import {NavigationInterface} from "../../constants/interfaces";
 import {addToFriendsListAsync} from "../../service/friendsService";
-import {Dimensions} from "react-native";
+import {Dimensions, Text} from "react-native";
+import fonts from "../../constants/fonts";
+import colors from "../../constants/colors";
+import AddFriendSvg from "../../assets/svg/AddFriendSvg";
 
 const Content = styled.View`
   height: 100%;
-  //background-color: red;
   flex: 1;
   align-items: center;
   justify-content: space-between;
   width: ${Dimensions.get('screen').width + 'px'};
 `;
+const UserNameWrapper = styled.View`
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 60px;
+`
+const UserName = styled.Text`
+  font-family: ${fonts.bold};
+  font-size: 28px;
+`
+const GameListWrapper = styled.View`
+  padding: 30px 30px 10px 30px;
+  flex: 1;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+const GameBox = styled.View`
+  width: 100px;
+  height: 100px;
+  padding: 20px 0;
+  background-color: ${colors.softGreen};
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-right: 5px;
+`
+const AddFriendButton = styled.TouchableOpacity`
+  position: absolute;
+  right: 0;
+`
 
 const SelectedPersonScreen = ({route, navigation}: any) => {
-    const {email, username, id} = route.params;
+    const {email, username, id, gamesList, isFriend} = route.params;
     const {navigate} = useNavigation<NavigationInterface>()
     const dispatch = useAppDispatch();
 
@@ -30,10 +62,25 @@ const SelectedPersonScreen = ({route, navigation}: any) => {
         })
     };
 
+
     return (
-        <OnboardLayout hideLogo goBack={() => navigate(Routes.HOME)}>
+        <OnboardLayout hideLogo goBack={() => isFriend ? navigate(Routes.FRIENDS) : navigate(Routes.HOME)}>
             <Content>
-                <CustomButton onPress={() => handleAddingFriend()} text={'dodaj znajomego'} style={{marginTop: 30}}/>
+                <UserNameWrapper>
+                    <UserName>{username}</UserName>
+                    {!isFriend && (
+                        <AddFriendButton onPress={() => handleAddingFriend()}>
+                            <AddFriendSvg/>
+                        </AddFriendButton>
+                    )}
+                </UserNameWrapper>
+                <GameListWrapper>
+                    {gamesList.map((item: any, index: number) => (
+                        <GameBox key={index}>
+                            <Text>{item.name}</Text>
+                        </GameBox>
+                    ))}
+                </GameListWrapper>
             </Content>
         </OnboardLayout>
     );

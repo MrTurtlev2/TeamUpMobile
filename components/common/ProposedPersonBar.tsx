@@ -90,7 +90,8 @@ const ProposedPersonBar = ({
                                age,
                                id,
                                gamesList,
-                               friendsList
+                               friendsList,
+                               isFriend,
                            }: ProposedPersonsInterface) => {
 
     const {navigate} = useNavigation()
@@ -106,7 +107,8 @@ const ProposedPersonBar = ({
             age,
             id,
             gamesList,
-            friendsList
+            friendsList,
+            isFriend
         })}>
             <BarWrapper>
                 <BgImageWrapper>
