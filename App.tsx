@@ -31,3 +31,4 @@ export default function App() {
         </View>
     );
 }
+//  eas build --profile preview --platform android

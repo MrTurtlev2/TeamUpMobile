@@ -6,7 +6,7 @@ import styled from "@emotion/native";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
-import {getRecommendedPeopleAsync} from '../../service/friendsService';
+import {getCurrentUserDataAsync, getRecommendedPeopleAsync} from '../../service/friendsService';
 
 const ScreenHeader = styled.Text`
   font-size: 20px;
@@ -21,6 +21,7 @@ const HomeScreen = ({navigation}: any) => {
 
     useEffect(() => {
         dispatch(getRecommendedPeopleAsync())
+        dispatch(getCurrentUserDataAsync())
     }, [])
 
     return (

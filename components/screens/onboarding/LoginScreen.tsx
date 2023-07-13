@@ -12,16 +12,16 @@ const ButtonsWrapper = styled.View`
 `;
 
 const LoginScreen = () => {
-    const [nick, setNick] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [inputError, setInputError] = useState(false);
 
     const dispatch = useAppDispatch();
 
     const onSubmit = () => {
-        if (nick && password) {
+        if (email && password) {
             const userData = {
-                email: nick,
+                email: email.toLowerCase(),
                 password: password,
             };
             dispatch(loginUser(userData));
@@ -31,7 +31,8 @@ const LoginScreen = () => {
     return (
         <OnboardLayout>
             <ButtonsWrapper>
-                <CustomInput isError={inputError} value={nick} onChangeText={text => setNick(text)} labelText="Email"/>
+                <CustomInput isError={inputError} value={email} onChangeText={text => setEmail(text)}
+                             labelText="Email"/>
                 <CustomInput
                     isError={inputError}
                     value={password}

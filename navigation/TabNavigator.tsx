@@ -80,7 +80,7 @@ const MainNavigator = ({navigation}: any) => {
     const {isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
     const Tab = createBottomTabNavigator();
     const dispatch = useAppDispatch()
-    const getUserData = async () => {
+    const getUserAuthData = async () => {
         const userData = await AsyncStorage.getItem('userData');
         if (userData) {
             dispatch(loginUser(JSON.parse(userData)));
@@ -88,13 +88,13 @@ const MainNavigator = ({navigation}: any) => {
     };
 
     useEffect(() => {
-        getUserData().catch((e) => console.log(e));
+        getUserAuthData().catch((e) => console.log(e));
     }, []);
 
 
     return (
         <>
-            {(isAuthLoading || isRegistrationLoading) && <LoadingModal/>}
+            {(isAuthLoading || isRegistrationLoading || isRecommendedPeopleLoading) && <LoadingModal/>}
             {(isLoggedIn || isRegistered) ? (
                 <Tab.Navigator
                     backBehavior="history"

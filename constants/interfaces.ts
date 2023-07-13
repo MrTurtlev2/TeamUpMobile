@@ -34,6 +34,18 @@ export interface TimeBarInterface {
     startHour: number,
 }
 
+export interface PersonBaseInterface {
+    age: number,
+    email: string,
+    endHour: number,
+    friendsList: object[]
+    gamesList: object[]
+    id: string
+    startHour: number,
+    username: string
+    isFriend?: boolean
+}
+
 export interface ProposedPersonsInterface {
     age: number,
     email: string,

@@ -5,6 +5,7 @@ import {allGamesSlice} from "./authorization/GetAllGamesSlice";
 import {userRegisterSlice} from "./authorization/UserRegisterSlice";
 import {recommendedPeopleSlice} from "./authorization/GetRecommendedPeopleSlice";
 import {friendsListSlice} from "./users/GetFriensSlice";
+import {userDataSlice} from "./users/GetCurrentUserDataSlice";
 
 export const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
         ReduxGames: allGamesSlice.reducer,
         ReduxRegister: userRegisterSlice.reducer,
         ReduxRecommendedPeople: recommendedPeopleSlice.reducer,
-        ReduxFriendsList: friendsListSlice.reducer
+        ReduxFriendsList: friendsListSlice.reducer,
+        ReduxUserData: userDataSlice.reducer
     },
 });
 
