@@ -9,7 +9,7 @@ import TabNavigator from './TabNavigator';
 
 const DrawerScrollView = styled(DrawerContentScrollView)`
   height: ${Dimensions.get('window').height + 'px'};
-  background-color: ${colors.mainBrown};
+  background-color: ${colors.white};
 `;
 const DrawerCloseButton = styled.TouchableOpacity`
   position: absolute;

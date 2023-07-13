@@ -2,6 +2,12 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axiosInstance from "../helpers/axiosInstance";
 
+
+export const deleteAccountAsync = async () => {
+    await AsyncStorage.clear()
+    return await axiosInstance.delete(`/api/v1/User`)
+}
+
 export const registerUserAsync = createAsyncThunk(
     '/api/v1/Register', async ({
                                    email,
