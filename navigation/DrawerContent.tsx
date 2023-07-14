@@ -48,7 +48,10 @@ const DrawerContent = ({props, navigation}: any) => {
 
     const handleDeletingAccount = () => {
         deleteAccountAsync().then(res => {
-            if (res.status === 200) dispatch(setSignedOutStatus(false))
+            if (res.status === 200) {
+                AsyncStorage.clear()
+                dispatch(setSignedOutStatus(false))
+            }
         })
     }
 

@@ -63,8 +63,7 @@ const SelectedPersonScreen = ({route, navigation}: any) => {
         })
     };
     const handleRemovingFriend = () => {
-        removeFriendAsync([id]).then((res: any) => {
-            console.log(res)
+        removeFriendAsync(id).then((res: any) => {
             if (res.status === 200) navigate(Routes.FRIENDS)
         })
     };

@@ -3,6 +3,7 @@ export default {
     white: '#ffffff',
     black: '#000000',
     blue: '#2E6FF2',
+    transparentBlue: '#2E6FF250',
     darkBlue: '#2E34A6',
     disabled: '#00000049',
     softGrey: '#D7D9D8',

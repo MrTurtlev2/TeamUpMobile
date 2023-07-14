@@ -60,12 +60,10 @@ export const userRegisterSlice = createSlice({
         builder.addCase(registerUserAsync.pending, (state) => {
             state.isRegistrationLoading = true;
             state.isRegistered = false;
-            console.log('rejestruje')
         });
         builder.addCase(registerUserAsync.fulfilled, (state) => {
             state.isRegistrationLoading = false;
             state.isRegistered = true;
-            console.log('zrejestrowano')
         });
         builder.addCase(registerUserAsync.rejected, (state, action) => {
             state.isRegistrationLoading = false;
