@@ -16,6 +16,9 @@ const ContentWrapper = styled.View`
   height: 60%;
   background-color: ${colors.white};
   border-radius: 6px;
+  padding: 40px 10px;
+  justify-content: center;
+  align-items: center;
 `
 const CloseButton = styled.TouchableOpacity`
   position: absolute;

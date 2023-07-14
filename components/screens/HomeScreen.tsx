@@ -9,6 +9,8 @@ import {useAppDispatch, useAppSelector} from "../../state/hooks";
 import {getCurrentUserDataAsync, getRecommendedPeopleAsync} from '../../service/friendsService';
 import {getAllGamesAsync} from "../../service/gamesService";
 import CustomModal from "../common/CustomModal";
+import CustomButton from "../common/CustomButton";
+import SelectDropdown from 'react-native-select-dropdown'
 
 const ScreenHeader = styled.Text`
   font-size: 20px;
@@ -20,11 +22,19 @@ const ScreenHeader = styled.Text`
 const HomeScreen = ({navigation}: any) => {
     const {recommendedPeopleList, isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
     const [gameId, setGameId] = useState('')
+    const [selectedItem, setSelectedItem] = useState('')
+
     const [isFilterModalOpen, setFilterModalOpen] = useState(false)
     const {gamesList} = useAppSelector(state => state.ReduxGames);
     const dispatch = useAppDispatch();
 
-    // const gameId = 'c752aa65-ba0f-414f-9030-40c37692377d'
+    const gameListForSelect = gamesList.map((games: any) => games.name)
+    const selectedGame: any = gamesList.find((game: any) => game.name === selectedItem)
+
+    const handleFiltration = () => {
+        dispatch(getRecommendedPeopleAsync({gameId: selectedGame.id}))
+        setFilterModalOpen(false)
+    }
 
     useEffect(() => {
         dispatch(getRecommendedPeopleAsync({gameId}))
@@ -56,7 +66,23 @@ const HomeScreen = ({navigation}: any) => {
                 }
             />
 
-            <CustomModal visible={isFilterModalOpen} closeModal={() => setFilterModalOpen(false)}/>
+            <CustomModal visible={isFilterModalOpen} closeModal={() => setFilterModalOpen(false)}>
+                <SelectDropdown
+                    data={gameListForSelect}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        setSelectedItem(selectedItem)
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        return item
+                    }}
+                />
+                <CustomButton onPress={() => handleFiltration()} text={'Szukaj'} style={{marginTop: 50}}/>
+                <CustomButton onPress={() => setSelectedItem('')} text={'wyczyść'} style={{marginTop: 20}}/>
+            </CustomModal>
         </Layout>
     );
 };
