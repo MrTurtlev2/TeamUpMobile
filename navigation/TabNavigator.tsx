@@ -78,6 +78,7 @@ const MainNavigator = ({navigation}: any) => {
     const {isLoggedIn, isAuthLoading} = useAppSelector(state => state.ReduxAuth);
     const {isRegistered, isRegistrationLoading} = useAppSelector(state => state.ReduxRegister);
     const {isRecommendedPeopleLoading} = useAppSelector(state => state.ReduxRecommendedPeople);
+    const {isFriendListLoading} = useAppSelector(state => state.ReduxFriendsList);
     const Tab = createBottomTabNavigator();
     const dispatch = useAppDispatch()
     const getUserAuthData = async () => {
@@ -94,7 +95,8 @@ const MainNavigator = ({navigation}: any) => {
 
     return (
         <>
-            {(isAuthLoading || isRegistrationLoading || isRecommendedPeopleLoading) && <LoadingModal/>}
+            {(isAuthLoading || isRegistrationLoading || isRecommendedPeopleLoading || isFriendListLoading) &&
+                <LoadingModal/>}
             {(isLoggedIn || isRegistered) ? (
                 <Tab.Navigator
                     backBehavior="history"

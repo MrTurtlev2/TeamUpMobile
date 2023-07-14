@@ -25,3 +25,7 @@ export const addToFriendsListAsync = async (friendsIds: any) => {
     const data = await axiosInstance.post(`/api/v1/User/Friends`, friendsIds)
     return data
 }
+export const removeFriendAsync = async (friendsIds: any) => {
+    const data = await axiosInstance.delete(`/api/v1/User/Friends`, friendsIds)
+    return data
+}

@@ -6,13 +6,14 @@ function AddFriendSvg(props: any) {
         <Svg
             height={60}
             width={60}
-            viewBox="0 0 512 512"
+            viewBox="0 0 60 60"
             xmlSpace="preserve"
             xmlns="http://www.w3.org/2000/svg"
             {...props}
+            fill="#000000"
         >
             <G
-                fill="none"
+                fill="#000"
                 stroke="#000"
                 strokeLinecap="round"
                 strokeLinejoin="round"

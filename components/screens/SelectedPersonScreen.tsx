@@ -5,11 +5,10 @@ import OnboardLayout from "../common/OnboardLayout";
 import {useNavigation} from "@react-navigation/native";
 import {Routes} from "../../constants/routeName";
 import {NavigationInterface} from "../../constants/interfaces";
-import {addToFriendsListAsync} from "../../service/friendsService";
-import {Dimensions, Text} from "react-native";
+import {addToFriendsListAsync, removeFriendAsync} from "../../service/friendsService";
+import {Dimensions, Image, Text} from "react-native";
 import fonts from "../../constants/fonts";
 import colors from "../../constants/colors";
-import AddFriendSvg from "../../assets/svg/AddFriendSvg";
 
 const Content = styled.View`
   height: 100%;
@@ -48,6 +47,8 @@ const GameBox = styled.View`
 const AddFriendButton = styled.TouchableOpacity`
   position: absolute;
   right: 0;
+  top: -10px;
+  z-index: 5;
 `
 
 const SelectedPersonScreen = ({route, navigation}: any) => {
@@ -61,6 +62,12 @@ const SelectedPersonScreen = ({route, navigation}: any) => {
             if (res.status === 200) navigate(Routes.HOME)
         })
     };
+    const handleRemovingFriend = () => {
+        removeFriendAsync([id]).then((res: any) => {
+            console.log(res)
+            if (res.status === 200) navigate(Routes.FRIENDS)
+        })
+    };
 
 
     return (
@@ -68,9 +75,13 @@ const SelectedPersonScreen = ({route, navigation}: any) => {
             <Content>
                 <UserNameWrapper>
                     <UserName>{username}</UserName>
-                    {!isFriend && (
+                    {isFriend ? (
+                        <AddFriendButton onPress={() => handleRemovingFriend()}>
+                            <Image source={require('../../assets/png/removeFriend.png')}/>
+                        </AddFriendButton>
+                    ) : (
                         <AddFriendButton onPress={() => handleAddingFriend()}>
-                            <AddFriendSvg/>
+                            <Image source={require('../../assets/png/addFriend.png')}/>
                         </AddFriendButton>
                     )}
                 </UserNameWrapper>

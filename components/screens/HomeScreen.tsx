@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}: any) => {
                 data={recommendedPeopleList}
                 ListHeaderComponent={() => <View style={{height: 30}}/>}
                 ListFooterComponent={() => <View style={{height: 110}}/>}
-                renderItem={({item}: any) => <ProposedPersonBar {...item}/>}
+                renderItem={({item}: any) => <ProposedPersonBar {...item} isFriend={false}/>}
                 keyExtractor={(item: any) => item.id}
                 refreshControl={
                     <RefreshControl
